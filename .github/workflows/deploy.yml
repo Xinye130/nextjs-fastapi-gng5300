@@ -19,10 +19,32 @@ jobs:
           node-version: '14'  # or the version your project uses
 
       - name: Install dependencies
-        run: npm install
+        working-directory: ./  # Path to your Next.js app
+        run: |
+          npm install pnpm -g
+          pnpm install
 
-      - name: Build project
+      - name: Build Next.js
+        working-directory: ./
         run: npm run build
 
       - name: Deploy to Vercel
-        run: npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --project ${{ secrets.VERCEL_PROJECT_ID }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          npm install -g vercel
+          vercel --prod --token $VERCEL_TOKEN --confirm
+
+  deploy-fastapi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      # Option 1: Deploy FastAPI as Serverless Functions on Vercel (for lightweight endpoints)
+      - name: Deploy FastAPI as Serverless Functions
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          npm install -g vercel
+          vercel deploy --token $VERCEL_TOKEN --confirm
