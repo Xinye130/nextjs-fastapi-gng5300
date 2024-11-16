@@ -20,7 +20,7 @@ jobs:
       - name: 'Deploy to Azure Container Instances'
         uses: 'azure/aci-deploy@v1'
         with:
-          name: mycontainerregistry
+          name: xinyecontainerregistry
           resource-group: myResourceGroup
           dns-name-label: myappdeployment
           image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/app:latest
