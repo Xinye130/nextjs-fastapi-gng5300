@@ -22,7 +22,7 @@ jobs:
         with:
           name: myapp
           resource-group: GNG5300ResourceGroup
-          dns-name-label: myappdeployment
+          dns-name-label: myapp${{ github.run_number }}
           image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/app:latest
           location: 'eastus'
           cpu: 1
