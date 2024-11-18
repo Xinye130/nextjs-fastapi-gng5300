@@ -15,7 +15,7 @@ jobs:
     
       - name: 'Azure Container Registry Login'
         run: |
-          az acr login --name xinye130containerregistry
+          az acr login --name xinye130containterregistry
 
       - name: 'Deploy to Azure Container Instances'
         uses: 'azure/aci-deploy@v1'
