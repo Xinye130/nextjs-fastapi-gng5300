@@ -22,8 +22,10 @@ jobs:
         with:
           name: app
           resource-group: GNG5300ResourceGroup
-          dns-name-label: app${{ github.run_number }}
-          image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/app:latest
+          dns-name-label: GNG5300ResourceGroup${{ github.run_number }}
+          registry-username: ${{ secrets.REGISTRY_USERNAME }}
+          registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+          image: xinye130containterregistry.azurecr.io/app:latest
           location: 'eastus'
           cpu: 1
           memory: 1.5
