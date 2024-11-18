@@ -19,7 +19,7 @@ jobs:
     
       - name: 'Azure Container Registry Login'
         run: |
-          az acr login --name xinyecontainerregistry
+          az acr login --name xinye130containerregistry
 
       - name: 'Build and push image'
         run: |

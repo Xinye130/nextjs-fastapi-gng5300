@@ -15,13 +15,13 @@ jobs:
     
       - name: 'Azure Container Registry Login'
         run: |
-          az acr login --name xinyecontainerregistry
+          az acr login --name xinye130containerregistry
 
       - name: 'Deploy to Azure Container Instances'
         uses: 'azure/aci-deploy@v1'
         with:
-          name: xinyecontainerregistry
-          resource-group: myResourceGroup
+          name: myapp
+          resource-group: GNG5300ResourceGroup
           dns-name-label: myappdeployment
           image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/app:latest
           location: 'eastus'
